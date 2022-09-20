@@ -1,0 +1,18 @@
+div 
+    =form_with model: @song do |form|
+
+        =form.label :Album
+        =form.select :album_id, Album.all.collect { |album| [album.title, album.id] }, include_blank: true 
+
+        =form.label :title 
+        =form.text_field :subject
+        -@song.errors.full_messages_for(:subject).each do |message|
+            =message 
+
+        =form.label :Duration 
+        =form.text_field :rhythm
+        -@song.errors.full_messages_for(:rhythm).each do |message|
+            =message 
+
+        =form.submit
+ 

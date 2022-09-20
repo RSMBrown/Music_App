@@ -1,0 +1,9 @@
+h1 
+    | List of Artists 
+
+-@artists.each do |artist|
+    ul 
+        =link_to artist.name, artist
+br 
+
+=link_to "Add Artist", new_artist_path 

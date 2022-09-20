@@ -1,0 +1,31 @@
+div 
+    =form_with model: @album do |form|
+
+        =form.label :Artist
+        =form.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, include_blank: true
+
+        br 
+
+        =form.label :Name 
+        =form.text_field :title
+            -@album.errors.full_messages_for(:title).each do |message|
+                =message 
+
+        br
+
+        =form.label :Genre 
+        =form.text_field :genre
+            -@album.errors.full_messages_for(:genre).each do |message|
+                =message 
+
+        br
+
+        =form.label :Year 
+        =form.text_field :release
+            -@album.errors.full_messages_for(:release).each do |message|
+                =message 
+
+        br
+
+        =form.submit
+ 

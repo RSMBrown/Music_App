@@ -1,0 +1,24 @@
+h1 
+    =@song.album.title
+
+h2
+    =@song.subject
+    |, 
+    =@song.rhythm
+
+h3 
+    -if @song.rating.present?
+        | Rating: 
+        = @song.rating.evaluation 
+        |/5
+    -else 
+        |Set Rating for song out of 5
+        = render "ratings/form"
+
+=link_to "Edit Song", edit_song_path(@song)
+br 
+=link_to "Delete this Song", song_path(@song),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
+br
+=link_to "Home", root_path 

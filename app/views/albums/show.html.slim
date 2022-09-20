@@ -1,0 +1,31 @@
+h1 
+    =@album.artist.name
+
+h1 
+    = @album.title
+    |,  
+    = @album.genre
+    |,  
+    = @album.release
+br 
+
+h2
+    -@album.songs.each do |song|
+        ul 
+            =link_to song.subject, song 
+            |, 
+            = song.rhythm
+
+=link_to "Add Song", new_song_path(@album)
+br 
+=link_to "Sort song by year", year_sort_path
+br
+=link_to "Sort song by genre", genre_sort_path
+br
+=link_to "Edit Album", edit_album_path(@album)
+br 
+=link_to "Delete this Album", album_path(@album),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
+br 
+=link_to "Home", root_path 

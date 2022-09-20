@@ -1,0 +1,29 @@
+h1 
+    =@artist.name
+
+br 
+
+h2  
+    | Albums
+    br 
+
+div 
+    -@artist.albums.each do |album|
+        ul 
+            =link_to album.title, album_path(album)
+            |, 
+            =album.genre 
+            |, 
+            =album.release
+            br 
+
+br 
+=link_to "Add Album", new_album_path(@artist, :artist_id)
+br 
+=link_to "Edit Artist", edit_artist_path(@artist)
+br 
+=link_to "Delete this Artist", artist_path(@artist),
+                    method: :delete,
+                    data: { confirm: "Are you sure?"}
+br 
+=link_to "Home", root_path 

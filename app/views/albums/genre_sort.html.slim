@@ -1,0 +1,30 @@
+h1 
+    |Sort by genre
+
+= form_tag "/genre_sort", method: "GET" do 
+    =label_tag :search_by_genre
+    = text_field_tag :search_by_genre, params[:search_by_genre]
+    = submit_tag "Search"
+h1 
+    |Search Results 
+
+-if @songs.present? 
+    -@songs.each do |song|
+        ul
+            =song.subject 
+            |,
+            =song.rhythm 
+            |,
+            =song.album.title
+            |, 
+            =song.album.release 
+            |,
+            =song.album.artist.name
+            br
+    br 
+-else 
+    |No results found
+    br 
+br 
+
+=link_to "Home", root_path 

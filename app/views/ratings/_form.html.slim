@@ -1,0 +1,10 @@
+div 
+    =form_with model: [@song, @song.build_rating] do |form|
+        =form.label :rating 
+        =form.text_field :evaluation
+        - @song.rating.errors.full_messages_for(:evaluation).each do |message|
+            div 
+                = message 
+
+        =form.submit
+ 
